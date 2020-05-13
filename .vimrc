@@ -65,6 +65,19 @@ if has("gui_running")
     else
         set guifont=DroidSansMonoNerdFont\ 12
     endif
+
+" resize font with control + arrows
+nnoremap <C-Up> :silent! let &guifont = substitute(
+ \ &guifont,
+ \ ':h\zs\d\+',
+ \ '\=eval(submatch(0)+1)',
+ \ '')<CR>
+nnoremap <C-Down> :silent! let &guifont = substitute(
+ \ &guifont,
+ \ ':h\zs\d\+',
+ \ '\=eval(submatch(0)-1)',
+ \ '')<CR>
+   
 "~~~~~~~~~~~~~~~~~~
 
 "~~~Vim color file~~~
@@ -313,7 +326,7 @@ call plug#end()
 
 "~~~custom keybindings~~~
 let mapleader = " " " set leader for custom bindings to space prevents namespace collisions
-" make window command a little simpler (ctrl + w sucks to press)
+" make window commands a little simpler (ctrl + w sucks to press)
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -321,11 +334,15 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>q :wincmd q<CR>
 
 " faster splitting
-nnoremap <leader>L :wincmd v<bar> :wincmd l<CR>
+nnoremap <leader>H :wincmd v<bar> :wincmd h<CR>
+nnoremap <leader>L :wincmd v<CR>  :wincmd l<CR>
+nnoremap <leader>J :wincmd s<bar> :wincmd j<CR>
+nnoremap <leader>K :wincmd s<CR>  :wincmd k<CR>
 
 " file explorer
-nnoremap <leader>e :wincmd v<bar> :wincmd l<CR><bar>:Ex<CR>
+nnoremap <leader>e :Vexplore!<CR>
 nnoremap <leader>E :Ex<CR>
+nnoremap <leader>t :Texplore<CR>
 
 " quick toggle some settings
 

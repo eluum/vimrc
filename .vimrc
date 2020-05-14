@@ -62,21 +62,16 @@ if has("gui_running")
     " system specific fonts
     if has("gui_win32") 
         set guifont=Consolas:h11:cANSI
+        " resize font with control + arrows
+        nnoremap <C-Up> :silent! let &guifont = substitute(&guifont, ':h\zs\d\+', '\=eval(submatch(0)+1)', '')<CR>
+        nnoremap <C-Down> :silent! let &guifont = substitute(&guifont, ':h\zs\d\+', '\=eval(submatch(0)-1)', '')<CR>
     else
         set guifont=DroidSansMonoNerdFont\ 12
+        " resize font with control + arrows
+        nnoremap <C-Up> :silent! let &guifont = substitute(&guifont, ' \zs\d\+', '\=eval(submatch(0)+1)', '')<CR>
+        nnoremap <C-Down> :silent! let &guifont = substitute(&guifont, ' \zs\d\+', '\=eval(submatch(0)-1)', '')<CR>
     endif
 
-" resize font with control + arrows
-nnoremap <C-Up> :silent! let &guifont = substitute(
- \ &guifont,
- \ ':h\zs\d\+',
- \ '\=eval(submatch(0)+1)',
- \ '')<CR>
-nnoremap <C-Down> :silent! let &guifont = substitute(
- \ &guifont,
- \ ':h\zs\d\+',
- \ '\=eval(submatch(0)-1)',
- \ '')<CR>
    
 "~~~~~~~~~~~~~~~~~~
 
@@ -317,9 +312,6 @@ set number
 
 "~~~plugins~~~
 call plug#begin('~/.vim/plugged')
-
-Plug 'mbbill/undotree'         " undo tree for tracking changes internally
-Plug 'ycm-core/YouCompleteMe'  " code completion
 
 call plug#end()
 "~~~~~~~~~~~~

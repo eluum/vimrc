@@ -68,7 +68,7 @@ if has("gui_running")
     else
         set guifont=DroidSansMonoNerdFont\ 12
         " resize font with control + arrows
-        nnoremap <C-Up> :silent! let &guifont = substitute(&guifont, ' \zs\d\+', '\=eval(submatch(0)+1)', '')<CR>
+        nnoremap <C-Up> :silent! let &guifont = substitute(&guifont, ' \zs\d\+', '\=eval(submatch(0)+1)', '')<CR>        
         nnoremap <C-Down> :silent! let &guifont = substitute(&guifont, ' \zs\d\+', '\=eval(submatch(0)-1)', '')<CR>
     endif
 
@@ -336,6 +336,8 @@ nnoremap <leader>e :Vexplore!<CR>
 nnoremap <leader>E :Ex<CR>
 nnoremap <leader>t :Texplore<CR>
 
+" misc
+nnoremap <leader><Bslash> :noh<CR>
 " quick toggle some settings
 
 nnoremap <leader>w :call ToggleWrap()<CR>

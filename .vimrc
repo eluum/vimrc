@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'arzg/vim-colors-xcode'
 Plug 'flazz/vim-colorschemes'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 "~~~~~~~~~~~~
@@ -40,22 +41,22 @@ function MyDiff()
   let arg3 = substitute(arg3, '!', '\!', 'g')
   if $VIMRUNTIME =~ ' '
     if &sh =~ '\<cmd'
-      if empty(&shellxquote)
+       if empty(&shellxquote)
         let l:shxq_sav = ''
         set shellxquote&
       endif
       let cmd = '"' . $VIMRUNTIME . '\diff"'
-    else
+     else
       let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
     endif
   else
     let cmd = $VIMRUNTIME . '\diff'
-  endif
+   endif
   let cmd = substitute(cmd, '!', '\!', 'g')
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
   if exists('l:shxq_sav')
     let &shellxquote=l:shxq_sav
-  endif
+   endif
 endfunction
 
 endif
@@ -85,7 +86,8 @@ if has("gui_running")
 "~~~~~~~~~~~~~~~~~~
 
 " golorscheme 
-    colorscheme xcodedarkhc
+    colorscheme gruvbox
+    let g:gruvbox_contrast_dark='hard' 
 
 "~~~Vim color file~~~
 " 
@@ -330,6 +332,7 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>q :wincmd q<CR>
+nnoremap <leader>Q :q!<CR>
 
 " faster splitting
 nnoremap <leader>H :wincmd v<bar> :wincmd h<CR>

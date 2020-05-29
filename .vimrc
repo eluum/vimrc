@@ -8,12 +8,19 @@ endif
 "~~~plugins~~~
 call plug#begin('~/.vim/plugged')
 
+Plug 'ycm-core/YouCompleteMe'
 Plug 'arzg/vim-colors-xcode'
 Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
-
+Plug 'xuhdev/vim-latex-live-preview'
 call plug#end()
 "~~~~~~~~~~~~
+"
+"~~~Plugin Settings and Bindings~~~
+
+nnoremap <leader>g :YcmCompleter GoTo<CR>
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 "~~~windows specific (Yucky!)~~~
 if has("gui_win32")

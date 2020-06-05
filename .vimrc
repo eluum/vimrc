@@ -24,7 +24,8 @@ nnoremap <leader>g :YcmCompleter GoTo<CR>
 
 "~~~windows specific (Yucky!)~~~
 if has("gui_win32")
-
+set nobackup
+set nowritebackup
 " Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
 

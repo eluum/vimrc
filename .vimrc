@@ -13,6 +13,7 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 Plug 'xuhdev/vim-latex-live-preview'
+Plug 'justinmk/vim-syntax-extra'
 
 call plug#end()
 "~~~~~~~~~~~~
@@ -290,3 +291,4 @@ set ruler
 set suffixes+=.aux,.bbl,.blg,.brf,.cb,.dvi,.idx,.ilg,.ind,.inx,.jpg,.log,.out,.png,.toc
 set suffixes-=.h
 set suffixes-=.obj
+highlight lineNr ctermfg=DarkGrey

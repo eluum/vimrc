@@ -8,11 +8,8 @@ endif
 "~~~plugins~~~
 call plug#begin('~/.vim/plugged')
 
-Plug 'ycm-core/YouCompleteMe'
-Plug 'arzg/vim-colors-xcode'
-Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
-Plug 'xuhdev/vim-latex-live-preview'
+" Plug 'xuhdev/vim-latex-live-preview'
 Plug 'justinmk/vim-syntax-extra'
 
 call plug#end()
@@ -100,19 +97,7 @@ else
     colorscheme native
 endif
 "~~~~~~~~~~~~~~~~~~~~
-
-" stuff I stole from the default windows config:
-if &t_Co > 2 || has("gui_running")
-  " Switch on highlighting the last used search pattern.
-  set hlsearch
-endif
-
-" When the +eval feature is missing, the set command above will be skipped.
-" Use a trick to reset compatible only when the +eval feature is missing.
-silent! while 0
-  set nocompatible
-silent! endwhile
-
+"
 " Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
 
@@ -130,11 +115,6 @@ set display=truncate
 " Show a few lines of context around the cursor.  Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=5
-
-" Do incremental searching when it's possible to timeout.
-if has('reltime')
-  set incsearch
-endif
 
 " Do not recognize octal numbers for Ctrl-A and Ctrl-X, most users find it
 " confusing.
@@ -242,8 +222,10 @@ nnoremap <leader>t :Texplore<CR>
 " misc
 nnoremap <leader><Bslash> :noh<CR>
 
-" quick toggle some settings
+" copy past 
+nnoremap <leader>p "0p
 
+" quick toggle some settings
 nnoremap <leader>w :call ToggleWrap()<CR>
 function! ToggleWrap()
     if &l:wrap
@@ -253,16 +235,20 @@ function! ToggleWrap()
     endif
 endfunction 
 
+let &l:relativenumber = 1
+
 nnoremap <leader>r :call ToggleRelative()<CR>
 function! ToggleRelative()
     if &l:relativenumber
         let &l:relativenumber = 0
-    else
-        let &l:relativenumber = 1
-    endif
+    else let &l:relativenumber = 1 endif
 endfunction
 
 "~~~~~~~~~~~~~~~~~~~~~~~~
+
+" SEARCH STUFF 
+set incsearch
+set hlsearch
 
 " coding stuff
 syntax on
@@ -271,7 +257,6 @@ set smartindent
 set nowrap
 set smartcase
 set ignorecase
-set incsearch
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set nobackup
@@ -279,7 +264,6 @@ set nowritebackup
 set noswapfile
 set noundofile
 
-set mouse=a        " occasionally convenient to use the mouse, try to avoid though
 set encoding=UTF-8 " allow unicode symbols
 
 " no replace mode
@@ -291,4 +275,17 @@ set ruler
 set suffixes+=.aux,.bbl,.blg,.brf,.cb,.dvi,.idx,.ilg,.ind,.inx,.jpg,.log,.out,.png,.toc
 set suffixes-=.h
 set suffixes-=.obj
+
+" color adjustments 
+" grey line numbers
 highlight lineNr ctermfg=DarkGrey
+" make highlights legible
+
+if has("gui_running")
+else    
+    highlight Search ctermfg=Black
+    highlight IncSearch ctermfg=Black
+    highlight ErrorMsg ctermfg=Black
+    highlight Error ctermfg=Black
+    highlight MatchParen ctermfg=Black
+endif

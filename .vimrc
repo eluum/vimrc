@@ -221,6 +221,8 @@ nnoremap <leader>t :Texplore<CR>
 
 " misc
 nnoremap <leader><Bslash> :noh<CR>
+nnoremap <tab> I<tab><esc>
+nnoremap <s-tab> I<backspace><esc>
 
 " copy past 
 nnoremap <leader>p "0p

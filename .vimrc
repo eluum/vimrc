@@ -17,8 +17,6 @@ call plug#end()
 "
 "~~~Plugin Settings and Bindings~~~
 
-nnoremap <leader>g :YcmCompleter GoTo<CR>
-
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 "~~~windows specific (Yucky!)~~~
@@ -243,7 +241,9 @@ nnoremap <leader>r :call ToggleRelative()<CR>
 function! ToggleRelative()
     if &l:relativenumber
         let &l:relativenumber = 0
-    else let &l:relativenumber = 1 endif
+    else 
+        let &l:relativenumber = 1 
+    endif
 endfunction
 
 "~~~~~~~~~~~~~~~~~~~~~~~~
@@ -279,6 +279,7 @@ set suffixes-=.h
 set suffixes-=.obj
 
 " color adjustments 
+" (for some reason this needs to be last in the config?)
 " grey line numbers
 highlight lineNr ctermfg=DarkGrey
 " make highlights legible

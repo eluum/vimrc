@@ -92,7 +92,7 @@ if has("gui_running")
     let g:gruvbox_contrast_dark='hard' 
 
 else
-    colorscheme native
+    colorscheme native  " 
 endif
 "~~~~~~~~~~~~~~~~~~~~
 "

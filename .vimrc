@@ -11,12 +11,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 " Plug 'xuhdev/vim-latex-live-preview'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'tikhomirov/vim-glsl'
 
 call plug#end()
 "~~~~~~~~~~~~
 "
 "~~~Plugin Settings and Bindings~~~
-
+" shader syntax coloring
+autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 "~~~windows specific (Yucky!)~~~
@@ -217,6 +219,15 @@ nnoremap <leader>e :Vexplore!<CR>
 nnoremap <leader>E :Ex<CR>
 nnoremap <leader>t :Texplore<CR>
 
+" autocomplete pairs
+noremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
 " misc
 nnoremap <leader><Bslash> :noh<CR>
 nnoremap <tab> I<tab><esc>
@@ -291,5 +302,6 @@ else
     highlight IncSearch ctermfg=Black
     highlight ErrorMsg ctermfg=Black
     highlight Error ctermfg=Black
-    highlight MatchParen ctermfg=Black
+    highlight MatchParen ctermfg=Cyan
+    highlight MatchParen ctermbg=Black
 endif

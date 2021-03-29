@@ -8,6 +8,10 @@ endif
 "~~~plugins~~~
 call plug#begin('~/.vim/plugged')
 
+" my plugins
+Plug 'eluum/vim-autopair'
+
+" other plugins
 Plug 'morhetz/gruvbox'
 " Plug 'xuhdev/vim-latex-live-preview'
 Plug 'justinmk/vim-syntax-extra'
@@ -81,7 +85,7 @@ if has("gui_running")
         nnoremap <C-Up> :silent! let &guifont = substitute(&guifont, ':h\zs\d\+', '\=eval(submatch(0)+1)', '')<CR>
         nnoremap <C-Down> :silent! let &guifont = substitute(&guifont, ':h\zs\d\+', '\=eval(submatch(0)-1)', '')<CR>
     else
-        set guifont=DroidSansMonoNerdFont\ 12
+        set guifont=DroidSansMono\ 12
         " resize font with control + arrows
         nnoremap <C-Up> :silent! let &guifont = substitute(&guifont, ' \zs\d\+', '\=eval(submatch(0)+1)', '')<CR>        
         nnoremap <C-Down> :silent! let &guifont = substitute(&guifont, ' \zs\d\+', '\=eval(submatch(0)-1)', '')<CR>
@@ -91,6 +95,7 @@ if has("gui_running")
 
     " colorscheme 
     colorscheme gruvbox
+    set background=dark
     let g:gruvbox_contrast_dark='hard' 
 
 else
@@ -219,26 +224,17 @@ nnoremap <leader>e :Vexplore!<CR>
 nnoremap <leader>E :Ex<CR>
 nnoremap <leader>t :Texplore<CR>
 
-" autocomplete pairs
-noremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
-
 " misc
 nnoremap <leader><Bslash> :noh<CR>
 nnoremap <tab> I<tab><esc>
 nnoremap <s-tab> I<backspace><esc>
 nnoremap <leader>= ggVG=''
 
-" copy past 
+" copy paste 
 nnoremap <leader>p "0p
 
 " quick toggle some settings
-nnoremap <leader>w :call ToggleWrap()<CR>
+nnoremap <silent> <leader>w :call ToggleWrap()<CR>
 function! ToggleWrap()
     if &l:wrap
         let &l:wrap = 0
@@ -249,7 +245,7 @@ endfunction
 
 let &l:relativenumber = 1
 
-nnoremap <leader>r :call ToggleRelative()<CR>
+nnoremap <silent> <leader>r :call ToggleRelative()<CR>
 function! ToggleRelative()
     if &l:relativenumber
         let &l:relativenumber = 0
@@ -294,8 +290,8 @@ set suffixes-=.obj
 " (for some reason this needs to be last in the config?)
 " grey line numbers
 highlight lineNr ctermfg=DarkGrey
-" make highlights legible
 
+" make highlights legible
 if has("gui_running")
 else    
     highlight Search ctermfg=Black

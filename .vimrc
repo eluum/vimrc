@@ -293,6 +293,7 @@ highlight lineNr ctermfg=DarkGrey
 
 " make highlights legible
 if has("gui_running")
+    " may use in the future
 else    
     highlight Search ctermfg=Black
     highlight IncSearch ctermfg=Black

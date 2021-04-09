@@ -18,6 +18,7 @@ Plug 'justinmk/vim-syntax-extra'
 Plug 'tikhomirov/vim-glsl' 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
 
 call plug#end()
 "~~~~~~~~~~~~

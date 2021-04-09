@@ -15,9 +15,9 @@ Plug 'eluum/vim-autopair'
 Plug 'morhetz/gruvbox'
 " Plug 'xuhdev/vim-latex-live-preview'
 Plug 'justinmk/vim-syntax-extra'
-Plug 'tikhomirov/vim-glsl'
-Plug 'junegunn/fzf'
-Plug 'jremmen/vim-ripgrep'
+Plug 'tikhomirov/vim-glsl' 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 "~~~~~~~~~~~~
@@ -25,6 +25,13 @@ call plug#end()
 "~~~Plugin Settings and Bindings~~~
 " shader syntax coloring
 autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
+    
+" Get text in files with Rg
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 "~~~windows specific (Yucky!)~~~

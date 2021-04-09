@@ -16,6 +16,8 @@ Plug 'morhetz/gruvbox'
 " Plug 'xuhdev/vim-latex-live-preview'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'tikhomirov/vim-glsl'
+Plug 'junegunn/fzf'
+Plug 'jremmen/vim-ripgrep'
 
 call plug#end()
 "~~~~~~~~~~~~
